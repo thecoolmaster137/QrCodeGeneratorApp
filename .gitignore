@@ -1,0 +1,81 @@
+# User-specific files
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer log files
+*.cab
+*.log
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# .NET Core build directories
+bin/
+obj/
+
+# .NET Core runtime
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET temporary files
+App_Data/
+
+# Azure Functions
+.local/
+
+# Rider IDE
+.idea/
+
+# VS for Mac
+.vscode/
+
+# User-specific files from Visual Studio for Mac
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows Installer
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer log files
+*.cab
+*.log
+
+# DotCover
+.idea/
+
+# JetBrains Rider and ReSharper
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Exclude all files that are related to packaging and publishing:
+*.nupkg
+*.snupkg
+*.zip
+
+# VSCode settings folder
+.vscode/
+
+# npm package-lock file
+package-lock.json
