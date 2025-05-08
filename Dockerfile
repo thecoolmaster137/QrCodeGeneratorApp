@@ -1,24 +1,22 @@
-# Use the official .NET SDK image for building the app
+# -------- Build Stage --------
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copy csproj and restore as distinct layers
-COPY *.sln ./
-COPY QrCodeGeneratorApp/*.csproj ./QrCodeGeneratorApp/
-RUN dotnet restore
+# Copy everything from the root (where your .csproj and code is)
+COPY . .
 
-# Copy the rest of the source code
-COPY QrCodeGeneratorApp/. ./QrCodeGeneratorApp/
-WORKDIR /app/QrCodeGeneratorApp
-RUN dotnet publish -c Release -o out
+# Restore dependencies
+RUN dotnet restore "./QrCodeGeneratorApp.csproj"
 
-# Build runtime image
+# Build and publish
+RUN dotnet publish "./QrCodeGeneratorApp.csproj" -c Release -o /app/publish
+
+# -------- Runtime Stage --------
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/QrCodeGeneratorApp/out ./
 
-# Expose port
-EXPOSE 80
+# Copy the published output from build
+COPY --from=build /app/publish .
 
-# Start the app
+# Run the app
 ENTRYPOINT ["dotnet", "QrCodeGeneratorApp.dll"]
